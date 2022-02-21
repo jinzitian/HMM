@@ -10,14 +10,14 @@ To install:
 
 .. code-block:: bash
 
-    $ pip install hmm_tool
+    $ pip install hmm-tool
 
 Quickstart
 ==========
 
 .. code-block:: python
 
-    from hmm_tool import HMM
+    from hmmtool import HMM
     import numpy as np
     
     ### 3 states, 6 observations:

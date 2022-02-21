@@ -3,7 +3,7 @@
 __title__ = 'hmm'
 __author__ = 'hedge_jzt@hotmail.com'
 __license__ = 'MIT'
-__version__ = '0.0.5'
+__version__ = '0.0.1'
 
 
 from .hmm import HMM

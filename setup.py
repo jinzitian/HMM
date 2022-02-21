@@ -2,16 +2,16 @@
 
 from setuptools import setup
 from setuptools import find_packages
-import hmm_tool
+import hmmtool
 
 with open('README.rst') as f:
     readme = f.read()
 
 
 setup(
-    name='hmm_tool',
-    version=hmm_tool.__version__,
-    packages=['hmm_tool'],
+    name='hmm-tool',
+    version=hmmtool.__version__,
+    packages=['hmmtool'],
     author='Chef_J',
     author_email='hedge_jzt@hotmail.com',
     maintainer='Chef_J',
