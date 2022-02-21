@@ -2,25 +2,25 @@
 
 from setuptools import setup
 from setuptools import find_packages
-import acAutoMechine
+import hmm
 
 with open('README.rst') as f:
     readme = f.read()
 
 
 setup(
-    name='acAutoMechine',
-    version=acAutoMechine.__version__,
-    packages=['acAutoMechine'],
+    name='hmm_tool',
+    version=hmm.__version__,
+    packages=['hmm'],
     author='Chef_J',
     author_email='hedge_jzt@hotmail.com',
     maintainer='Chef_J',
     maintainer_email='hedge_jzt@hotmail.com',
-    description='A fast Python implementation of ac auto mechine.',
+    description='A fast Python implementation of HMM.',
     long_description=readme,
     long_description_content_type='text/markdown',
     license='MIT',
-    url='https://github.com/jinzitian/AcAutoMechine',
+    url='https://github.com/jinzitian/HMM',
     install_requires=[],
     classifiers=[
         'Intended Audience :: Developers',

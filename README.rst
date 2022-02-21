@@ -1,8 +1,8 @@
 =================
-AC Auto Mechine
+HMM
 =================
 
-A fast Python implementation of Ac Auto Mechine
+A fast Python implementation of HMM
 
 Installation
 ============
@@ -10,28 +10,40 @@ To install:
 
 .. code-block:: bash
 
-    $ pip install acAutoMechine
+    $ pip install hmm_tool
 
 Quickstart
 ==========
 
 .. code-block:: python
 
-    from acAutoMechine import Ac_mechine
+    from hmm_tool import HMM
     
-    ### usage one:
-    actree = Ac_mechine()
-    actree.add_keys('he')
-    actree.add_keys('her')
-    actree.add_keys('here')
-    actree.build_actree()
-    ### all match
-    print(actree.match("he here her"))  
-    ### long match
-    print(actree.match_long("he here her"))  
-    ### all match with match path
-    print(actree.match("he here her", True))  
-    ### long match with match path
-    print(actree.match_long("he here her", True))  
+    ### 3 states, 6 observations:
+	### states values:0/1/2, observations values:0/1/2/3/4/5 
+    hmm = HMM(3,6)
+	
+	#train
+	s1 = np.random.randint(6,size = 60)
+    s2 = np.random.randint(6,size = 40)
+    hmm.add_data([s1,s2])
+	hmm.train(maxStep=50,delta=0.001)
+	
+	#get params
+	print(hmm.pi)
+    print(hmm.A)
+    print(hmm.B)
+	
+	#predict
+	#random data
+	s3 = np.random.randint(6,size = 10)
+    s4 = np.random.randint(6,size = 10)
+	
+	#multi inputs:[[o1,o2,o3,...,ot1],[o1,o2,o3,...,ot2]]
+	#output: [prob1, prob2]
+	print(hmm.estimate_prob([s3,34]))
+	#output: [(prob1, [s1,s2,s3,...,st1]), (prob2, [s1,s2,s3,...,st2])]
+	print(hmm.decode([s3,34]))
+	  
     
 	

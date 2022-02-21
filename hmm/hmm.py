@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 @author: Jin Zitian
-@time: 2020-12-21 16:55
+@time: 2022-2-18 16:55
 """
 
 import numpy as np     
@@ -120,8 +120,9 @@ class HMM(object):
             step += 1
     
     #viterbi算法
-    #单条[[o1,o2,o3,...,ot1]]
-    #多条[[o1,o2,o3,...,ot1],[o1,o2,o3,...,ot2]]
+    #单条输入：[[o1,o2,o3,...,ot1]]
+    #多条输入：[[o1,o2,o3,...,ot1],[o1,o2,o3,...,ot2]]
+    #输出：[(prob1, [s1,s2,s3,...,st1]), (prob2, [s1,s2,s3,...,st2])]
     def decode(self, o_seq):
         self.forward(o_seq)
         result = []
@@ -153,6 +154,7 @@ class HMM(object):
     #计算概率 P(O|λ)
     #单条[[o1,o2,o3,...,ot1]]
     #多条[[o1,o2,o3,...,ot1],[o1,o2,o3,...,ot2]]
+    #输出：[prob1, prob2]
     def estimate_prob(self, o_seq):
         self.forward(o_seq)
         result = []
@@ -172,7 +174,7 @@ if __name__ == '__main__':
     print(myhmm.pi)
     print(myhmm.A)
     print(myhmm.B)
-    print(myhmm.inference([s]))
+    print(myhmm.estimate_prob([s]))
     
     
     from hmmlearn import hmm
@@ -194,7 +196,7 @@ if __name__ == '__main__':
     ss = np.random.randint(6,size = 14)
     max_hidden_prob, hidden_state = myhmm.decode([ss])[0]
     print(max_hidden_prob, hidden_state)
-    o_prob = myhmm.inference([ss])[0]
+    o_prob = myhmm.estimate_prob([ss])[0]
     print(o_prob)
     
     d = model.decode(ss.reshape([-1,1]), algorithm="viterbi")

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-__title__ = 'ac_auto_mechine'
+__title__ = 'hmm'
 __author__ = 'hedge_jzt@hotmail.com'
 __license__ = 'MIT'
-__version__ = '0.0.3'
+__version__ = '0.0.1'
 
 
-from .ac_auto_mechine import Ac_mechine
+from .hmm import HMM
