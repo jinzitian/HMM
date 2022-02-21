@@ -2,7 +2,7 @@
 
 from setuptools import setup
 from setuptools import find_packages
-import hmm
+import hmm_tool
 
 with open('README.rst') as f:
     readme = f.read()
@@ -10,8 +10,8 @@ with open('README.rst') as f:
 
 setup(
     name='hmm_tool',
-    version=hmm.__version__,
-    packages=['hmm'],
+    version=hmm_tool.__version__,
+    packages=['hmm_tool'],
     author='Chef_J',
     author_email='hedge_jzt@hotmail.com',
     maintainer='Chef_J',
