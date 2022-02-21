@@ -18,6 +18,7 @@ Quickstart
 .. code-block:: python
 
     from hmm_tool import HMM
+    import numpy as np
     
     ### 3 states, 6 observations:
     ### states values:0/1/2, observations values:0/1/2/3/4/5 
@@ -41,9 +42,9 @@ Quickstart
 	
     #multi inputs:[[o1,o2,o3,...,ot1],[o1,o2,o3,...,ot2]]
     #output: [prob1, prob2]
-    print(hmm.estimate_prob([s3,34]))
+    print(hmm.estimate_prob([s3,s4]))
     #output: [(prob1, [s1,s2,s3,...,st1]), (prob2, [s1,s2,s3,...,st2])]
-    print(hmm.decode([s3,34]))
+    print(hmm.decode([s3,s4]))
 	  
     
 	
