@@ -20,30 +20,30 @@ Quickstart
     from hmm_tool import HMM
     
     ### 3 states, 6 observations:
-	### states values:0/1/2, observations values:0/1/2/3/4/5 
+    ### states values:0/1/2, observations values:0/1/2/3/4/5 
     hmm = HMM(3,6)
 	
-	#train
-	s1 = np.random.randint(6,size = 60)
+    #train
+    s1 = np.random.randint(6,size = 60)
     s2 = np.random.randint(6,size = 40)
     hmm.add_data([s1,s2])
-	hmm.train(maxStep=50,delta=0.001)
+    hmm.train(maxStep=50,delta=0.001)
 	
-	#get params
-	print(hmm.pi)
+    #get params
+    print(hmm.pi)
     print(hmm.A)
     print(hmm.B)
 	
-	#predict
-	#random data
-	s3 = np.random.randint(6,size = 10)
+    #predict
+    #random data
+    s3 = np.random.randint(6,size = 10)
     s4 = np.random.randint(6,size = 10)
 	
-	#multi inputs:[[o1,o2,o3,...,ot1],[o1,o2,o3,...,ot2]]
-	#output: [prob1, prob2]
-	print(hmm.estimate_prob([s3,34]))
-	#output: [(prob1, [s1,s2,s3,...,st1]), (prob2, [s1,s2,s3,...,st2])]
-	print(hmm.decode([s3,34]))
+    #multi inputs:[[o1,o2,o3,...,ot1],[o1,o2,o3,...,ot2]]
+    #output: [prob1, prob2]
+    print(hmm.estimate_prob([s3,34]))
+    #output: [(prob1, [s1,s2,s3,...,st1]), (prob2, [s1,s2,s3,...,st2])]
+    print(hmm.decode([s3,34]))
 	  
     
 	
