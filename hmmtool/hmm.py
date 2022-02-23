@@ -124,7 +124,6 @@ class HMM(object):
     #多条输入：[[o1,o2,o3,...,ot1],[o1,o2,o3,...,ot2]]
     #输出：[(prob1, [s1,s2,s3,...,st1]), (prob2, [s1,s2,s3,...,st2])]
     def decode(self, o_seq):
-        self.forward(o_seq)
         result = []
         for i in range(len(o_seq)):
             seq = o_seq[i]
