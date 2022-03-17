@@ -86,7 +86,11 @@ class HMM(object):
         while step < maxStep:
             print("=============== step {} ===============".format(step))
             #固定模型参数计算隐含数据
+            '''
             self.forward(self.train_data)
+            '''
+            #这里estimate_prob中计算了forward，所以 不用单独计算一次forward
+            log_prob = [np.log(p) for p in self.estimate_prob(self.train_data)]
             self.backward(self.train_data)
             self.gamma_matrix()
             self.ksi_matrix()
@@ -110,6 +114,7 @@ class HMM(object):
             print("pi_error is {}".format(pi_error))
             print("A_error is {}".format(A_error))
             print("B_error is {}".format(B_error))
+            print("log_prob is {}".format(log_prob))
             if pi_error < delta and A_error < delta and B_error < delta:
                 if 's' in self.train_params:
                     self.pi = new_pi
