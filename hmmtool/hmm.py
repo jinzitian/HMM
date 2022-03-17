@@ -9,7 +9,7 @@ import numpy as np
 
 class HMM(object):
     
-    def __init__(self, state_num, observe_num):
+    def __init__(self, state_num, observe_num, train_params = 'ste'):
         self.s_n = state_num
         self.o_n = observe_num
         self.A = np.random.rand(self.s_n, self.s_n)
@@ -19,6 +19,7 @@ class HMM(object):
         self.pi = np.random.rand(self.s_n)
         self.pi = self.pi/sum(self.pi)
         self.train_data = []
+        self.train_params = train_params
         
     #input_data 格式为 [[o1,o2,o3,...,ox], [o1,o2,o3,...,oy]]
     #支持多观测序列输入,观测序列的输入是index化后的值，需要提前根据实际的观测值字典去映射，解码出的隐状态值也是一样，都是index数据，需要再根据映射还原
@@ -110,13 +111,19 @@ class HMM(object):
             print("A_error is {}".format(A_error))
             print("B_error is {}".format(B_error))
             if pi_error < delta and A_error < delta and B_error < delta:
-                self.pi = new_pi
-                self.A = new_A
-                self.B = new_B
+                if 's' in self.train_params:
+                    self.pi = new_pi
+                if 't' in self.train_params:
+                    self.A = new_A
+                if 'e' in self.train_params:
+                    self.B = new_B
                 break
-            self.pi = new_pi
-            self.A = new_A
-            self.B = new_B
+            if 's' in self.train_params:
+                self.pi = new_pi
+            if 't' in self.train_params:
+                self.A = new_A
+            if 'e' in self.train_params:
+                self.B = new_B
             step += 1
     
     #viterbi算法
